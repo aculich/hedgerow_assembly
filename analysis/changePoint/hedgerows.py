@@ -54,7 +54,11 @@ prefixes = [p for p in prefixes if prefixes.count(p) >=5]
 prefixes = set(prefixes)
 
 ## run change point analysis for each site
-ncores = 2
+
+## FIXME: this hard-coded value should be turned into a run-time parameter in the future,
+##        but for now we'll hard-code it to 24 cores for Comet, even though Bridges has 28
+##        cores, but that's okay since this doesn't efficiently use all the cores anyway.
+ncores = 24
 
 jobs = [(runNetworkChangePoint, [[f for f in l if prefix in f]]) for prefix in prefixes]
 mapPool(ncores, jobs)
