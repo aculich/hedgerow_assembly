@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-## compile the python functions for the change point analysis
-cd changePoint/cptPeel/fitHRG_GPL_Bayes/
-make cleanall; make
-cd ../consensusHRG_GPL_Bayes/
-make
-cd ../../
+## FIXME: compilation should happen only once, so we move this
+##        outside the batch script, into the package install.
+##        also, BOTH binaries for have a `make cleanall; make`
+
+# ## compile the python functions for the change point analysis
+# cd changePoint/cptPeel/fitHRG_GPL_Bayes/
+# make cleanall; make
+# cd ../consensusHRG_GPL_Bayes/
+# make
+# cd ../../
 
 
 ##
