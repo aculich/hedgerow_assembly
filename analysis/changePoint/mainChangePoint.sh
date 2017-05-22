@@ -19,9 +19,12 @@ for i in `seq 1 100`; do
     filename=run_${i}.csv
     RScript prepChangePointOutput.R $filename --save
 
-    mv cptPeel/LogLs_4.txt  cptPeel/LogLs_4.{$i}.txt
-    mv cptPeel/results_4.txt  cptPeel/results_4.{$i}.txt
-    rm cptPeel/LogLs_4.txt cptPeel/results_4.txt
+    ## FIXME: this approach does not play nicely in an HPC batch environment,
+    ##        so just commenting out for now and will check other parts of the
+    ##        code to make sure it is reading/writing correct filenames.
+    #mv cptPeel/LogLs_4.txt  cptPeel/LogLs_4.{$i}.txt
+    #mv cptPeel/results_4.txt  cptPeel/results_4.{$i}.txt
+    #rm cptPeel/LogLs_4.txt cptPeel/results_4.txt
 done
 
 
