@@ -16,6 +16,7 @@
 # manually:
 #     cd /oasis/scratch/comet/$USER/temp_project/hedgerow_assembly/analysis
 #     mkdir changePoint/logs
+#     sbatch  -A ucb152 sbatch-comet.sh
 
 module load R/3.2.3 python/2.7.10 scipy/2.7
 cd changePoint
