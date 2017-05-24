@@ -8,7 +8,7 @@
 #SBATCH --ntasks-per-node=24
 #SBATCH --export=ALL
 #SBATCH -t 2:00:00
-#SBATCH --array=1-10
+#SBATCH --array=1-100
 #SBATCH --mail-user=aculich@berkeley.edu,lponisio@berkeley.edu
 #SBATCH --mail-type=ALL
 
