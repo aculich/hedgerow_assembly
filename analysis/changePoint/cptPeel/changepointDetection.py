@@ -137,7 +137,7 @@ class anomalyDetection(object):
                 for p in pvals:
                     f.write(" %f" % p)
                 f.write("\n")
-            with open("LogLs_%i.txt" % self.window, "a") as f:
+            with open("LogLs_%i_%s.txt" % (self.window, filename_suffix), "a") as f:
                 f.write("%s %s" % (self.currentNormalNetworks[0].strip(".pairs"),self.currentNormalNetworks[-1].strip(".pairs")))
                 for p in self.test_model:
                     f.write(" %f" % p)
