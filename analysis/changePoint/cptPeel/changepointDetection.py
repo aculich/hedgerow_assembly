@@ -126,7 +126,13 @@ class anomalyDetection(object):
 
         self.pvals=pvals
         if self.window is not None:
-            with open("results_%i.txt" % self.window, "a") as f:
+            ## FIXME: later this should be generalized to passing in the
+            ## filename instead of explicitly hard-coding SLURM jobarrays, but
+            ## do what ya gotta do when you're trying to hit a deadline.
+            SLURM_ARRAY_JOB_ID=os.getenv("SLURM_ARRAY_JOB_ID")
+            SLURM_ARRAY_TASK_ID=os.getenv("SLURM_ARRAY_TASK_ID")
+            filename_suffix = "{}_{}".format(SLURM_ARRAY_JOB_ID, SLURM_ARRAY_TASK_ID)
+            with open("results_%i_%s.txt" % (self.window, filename_suffix), "a") as f:
                 f.write("%s %s" % (self.currentNormalNetworks[0].strip(".pairs"),self.currentNormalNetworks[-1].strip(".pairs")))
                 for p in pvals:
                     f.write(" %f" % p)
