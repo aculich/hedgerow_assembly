@@ -1,16 +1,24 @@
 #!/bin/bash
 
 #SBATCH --job-name="hedgerow_assembly"
-#SBATCH --output="hedgerow_assembly.%j.%N.out"
+#SBATCH --output="logs/hedgerow_assembly.%j.%N.out"
+#SBATCH --error="logs/hedgerow_assembly.%j.%N.err"
 #SBATCH --partition=compute
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=24
 #SBATCH --export=ALL
 #SBATCH -t 2:00:00
+#SBATCH --array=1-10
+#SBATCH --mail-user=aculich@berkeley.edu,lponisio@berkeley.edu
+#SBATCH --mail-type=ALL
 
-#This job runs with 1 nodes, 24 cores per node for a total of 24 cores.
+# To run this job on XSEDE Comet you'll need to do the following
+# manually:
+#     cd /oasis/scratch/comet/$USER/temp_project/hedgerow_assembly/analysis
+#     mkdir changePoint/logs
 
 module load R/3.2.3 python/2.7.10 scipy/2.7
-cd /oasis/scratch/comet/aculich/temp_project/hedgerow_assembly/analysis/
+cd changePoint
 
-bash -x changePoint/mainChangePoint.sh
+python hedgerows.py
+RScript prepChangePointOutput.R ${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID} --save
