@@ -13,7 +13,7 @@
 
 
 ##
-RScript dataPrep.R
+Rscript dataPrep.R
 
 for i in `seq 1 100`; do
     ## runs in parallel on 2 cores
@@ -21,7 +21,7 @@ for i in `seq 1 100`; do
 
     ## convert data to a helpful form
     filename=run_${i}.csv
-    RScript prepChangePointOutput.R $filename --save
+    Rscript prepChangePointOutput.R $filename --save
 
     ## FIXME: this approach does not play nicely in an HPC batch environment,
     ##        so just commenting out for now and will check other parts of the

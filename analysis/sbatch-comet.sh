@@ -22,4 +22,4 @@ module load R/3.2.3 python/2.7.10 scipy/2.7
 cd changePoint
 
 python hedgerows.py
-RScript prepChangePointOutput.R ${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID} --save
+Rscript prepChangePointOutput.R ${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID} --save
