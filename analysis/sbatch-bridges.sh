@@ -16,7 +16,7 @@
 # manually:
 #     cd /pylon5/ca4s8fp/$USER/hedgerow_assembly/analysis/
 #     mkdir changePoint/logs
-#     sbatch  -A ucb152 sbatch-comet.sh
+#     sbatch  -A ca4s8fp sbatch-comet.sh
 
 module load R/3.2.3-mkl python/2.7.11_gcc
 cd changePoint
